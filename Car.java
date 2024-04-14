@@ -38,7 +38,7 @@ public class Car {
      * @return whether or not the passenger could board to the car
      */
     public boolean addPassenger(Passenger p){
-        if (seatsRemaining() > 0){
+        if (seatsRemaining() > 0 && !this.passengers.contains(p)){
             this.passengers.add(p);
             return true;
         }
