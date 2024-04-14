@@ -35,7 +35,7 @@ public class Train {
     }
 
     /** 
-     * Removes a car from teh train
+     * Removes a car from the train
      * @param c the car to be removed
      */
     public void removeCar(Car c){
