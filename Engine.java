@@ -54,8 +54,14 @@ public class Engine {
      * @return true if the engine has enough fuel and false if not
      */
     public boolean go(){
-        if (this.currentFuel > 0){
-            setcurrentFuel(currentFuel - 5);;
+        if (this.currentFuel > 5){
+            setcurrentFuel(currentFuel - 5);
+            System.out.print.ln("Your current fuel level is: ", this.currentFuel);
+            return true;
+        }
+        else if (this.currentFuel > 0 && this.currentFuel < 5){
+            setcurrentFuel(currentFuel - 1);
+            System.out.print.ln("You are running low on fuel! Your current fuel level is: ", this.currentFuel);
             return true;
         }
         else{
