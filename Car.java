@@ -5,7 +5,7 @@ public class Car {
      * Creates the train's cars
      */
     private int maxCapacity;
-    public ArrayList<Passenger> passengers;
+    private ArrayList<Passenger> passengers;
 
     /**
      * Constructor for the Car class. The maxCapacity limits the size of the arrayList storing passengers
@@ -85,4 +85,7 @@ public class Car {
     }
 }
 
+/**NOTES TO ME
+* ArrayList passengers should be private. The printManifest method is sort of it's getter I presume.
+*/
 
