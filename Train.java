@@ -82,12 +82,6 @@ public class Train {
             getCar(i).passengerList();
         }
     }
-    public static void main(String[] args) {
-        Train myTrain = new Train(FuelType.ELECTRIC, 100.0, 5, 2);
-        Passenger p1 = new Passenger("Chioma");
-        p1.boardCar(myTrain.getCar(0));
-        myTrain.printTrainManifest();
-    }
 }
 
 
