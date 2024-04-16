@@ -4,7 +4,7 @@ public class Train {
     /*
      * Creates a train that brings all other classes (Engine, Car, Passengers) together
      */
-    private Engine engine;
+    private final Engine engine;
     private ArrayList<Car> cars;
     private int maxCapacity;
     private int seatsRemaining;
@@ -84,6 +84,7 @@ public class Train {
 
 /**
  * NOTES TO ME
+ * final "implements£ a has-a relationship
  * Function to test the code:
  * public static void main(String[] args) {
         Train myTrain = new Train(FuelType.ELECTRIC, 100.0, 5, 2);
