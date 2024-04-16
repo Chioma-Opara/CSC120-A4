@@ -6,16 +6,14 @@ public class Train {
      */
     private final Engine engine;
     private ArrayList<Car> cars;
-    private int maxCapacity;
-    private int seatsRemaining;
-    public int passengerCapacity;
 
     // NOTE TO ME: passengerCapacity is the capacity of a single car. So, the maxCapacity of the train is the product of the number of cars and passengerCapacity
-    Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
+    public Train(FuelType fuelType, double fuelCapacity, int nCars, int passengerCapacity){
         this.engine = new Engine(fuelType, fuelCapacity);
         this.cars = new ArrayList<Car>(nCars);
-        this.maxCapacity = nCars * passengerCapacity;
-        this.passengerCapacity = passengerCapacity;
+        for (int i = 0; i < nCars; i++){
+            this.addCar(new Car(passengerCapacity));
+        }
     }
 
     /**
@@ -56,7 +54,11 @@ public class Train {
      * @return the total maximum capacity of the train
      */
     public int getMaxCapacity(){
-        return this.maxCapacity;
+        int maxCapacity = 0; 
+        for (Car c: cars){
+            maxCapacity += c.getCapacity();
+        }
+        return maxCapacity;
     }
 
     /**
@@ -64,6 +66,7 @@ public class Train {
      * @return the number of seats left on the train
      */
     public int seatsRemaining(){
+        int seatsRemaining = 0;
         for (Car c: cars){
             seatsRemaining += c.seatsRemaining();
         }
@@ -85,42 +88,12 @@ public class Train {
 /**
  * NOTES TO ME
  * final "implements£ a has-a relationship
+ * Could have a board car. Try to board a car, if full, move down
  * Function to test the code:
- * public static void main(String[] args) {
+ *     public static void main(String[] args) {
         Train myTrain = new Train(FuelType.ELECTRIC, 100.0, 5, 2);
-        Car c1 = new Car(myTrain.passengerCapacity);
-        Car c2 = new Car(myTrain.passengerCapacity);
-        Car c3 = new Car(myTrain.passengerCapacity);
-        Car c4 = new Car(myTrain.passengerCapacity);
-        Car c5 = new Car(myTrain.passengerCapacity);
-        myTrain.addCar(c1);
-        myTrain.addCar(c2);
-        myTrain.addCar(c3);
-        myTrain.addCar(c4);
-        myTrain.addCar(c5);
-        myTrain.removeCar(c5);
         Passenger p1 = new Passenger("Chioma");
-        Passenger p2 = new Passenger("John");
-        Passenger p3 = new Passenger("Paula");
-        Passenger p4 = new Passenger("Elm");
-        Passenger p5 = new Passenger("Cniper");
-        Passenger p6 = new Passenger("Roxy");
-        Passenger p7 = new Passenger("Alternateish");
-        Passenger p8 = new Passenger("yvonne");
-        Passenger p9 = new Passenger("Mowan");
-        Passenger p10 = new Passenger("Jostuc");
-        Passenger p11 = new Passenger("Nimpo");
-        p1.boardCar(c1);
-        p2.boardCar(c2);
-        p3.boardCar(c3);
-        p4.boardCar(c4);
-        p5.boardCar(c5);
-        p6.boardCar(c1);
-        p7.boardCar(c2);
-        p8.boardCar(c3);
-        p9.boardCar(c4);
-        p10.boardCar(c5);
+        p1.boardCar(myTrain.getCar(0));
         myTrain.printTrainManifest();
-        p11.boardCar(c2);
     }
  */
