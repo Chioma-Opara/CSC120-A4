@@ -59,7 +59,7 @@ public class Engine {
             System.out.print.ln("Your current fuel level is: ", this.currentFuel);
             return true;
         }
-        else if (this.currentFuel > 0 && this.currentFuel < 5){
+        else if (this.currentFuel > 0 && this.currentFuel <= 5){
             setcurrentFuel(currentFuel - 1);
             System.out.print.ln("You are running low on fuel! Your current fuel level is: ", this.currentFuel);
             return true;
